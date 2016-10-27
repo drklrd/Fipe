@@ -8,7 +8,6 @@ var https = remote.require('https');
 var url = remote.require('url');
 var dialog = remote.dialog;
 
-
 // var cp = remote.require('child_process').exec('halt -p', console.log);
 var file = [],
 	request = [],
@@ -221,3 +220,12 @@ var checkAutoShutDownEnabled = () => {
 setInterval(function() {
 	checkAutoShutDownEnabled();
 }, 5000);
+
+var socket = io('http://localhost:8080');
+
+socket.on('tryDownloadingThis',(data)=>{
+	// console.log('RERRRE',data);
+	addQueue();
+	document.getElementById('file_to_download_'+queueElements).setAttribute('value',data.data.newUrl);
+	document.getElementById('initiatebutton_'+queueElements).click();
+})
