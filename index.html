@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Fipe</title>
+		<script src="index.js"></script>
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style/style.css">
+	</head>
+	<body>
+		<div id="message_body"></div>
+		<div id="whole_body">
+			
+				<ul class="nav nav-tabs">
+				  <li class="active">
+				  	<a data-toggle="tab" href="#home">
+				  		<span class="glyphicon glyphicon-download"></span>
+				  		Downloads
+				  	</a>
+				  </li>
+				  <li>
+				  	<a data-toggle="tab" href="#menu1">
+				  		<span class="glyphicon glyphicon-cog"></span>
+				  		Settings
+				  	</a>
+				  </li>
+				  <!-- <li><a data-toggle="tab" href="#menu1">Completed</a></li> -->
+				</ul>
+
+				<div class="tab-content">
+				  <div id="home" class="tab-pane fade in active">
+				    
+				    <section class="content">
+				    	<!--  
+				    		<input type="text" name="fileToDownload" id="file_to_download">
+				    		<button onclick="clicked()">
+				    			Click Here
+				    		</button>
+				    		<button onclick="pause()">
+				    			Pause
+				    		</button>
+				    		<button onclick="resume()">
+				    			Resume
+				    		</button> -->
+				    		<button class="btn btn-success" onclick="addQueue()" >
+				    			<span class="glyphicon glyphicon-plus"></span>
+				    			Add New Download
+				    		</button>
+				    		<!-- <div id="progress_bar"></div> -->
+
+				    		<div id="queue_list"></div>
+				    </section>
+				    
+				  </div>
+				  <div id="menu1" class="tab-pane fade">
+				  	<section class="content">
+				  		<input type="checkbox" name="automaticShutdown" onchange="autoShutToggle()"> Shutdown after download completes
+				  	</section>
+
+				    
+				  </div>
+				</div>
+
+				<div id="myModal" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">Modal Header</h4>
+				      </div>
+				      <div class="modal-body">
+				        <p>Some text in the modal.</p>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
+
+				  </div>
+				</div>
+
+		</div>
+		
+		
+	</body>
+
+	<script>
+		// You can also require other files to run in this process
+		require('./renderer.js')
+	</script>
+</html>

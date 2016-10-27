@@ -1,0 +1,31 @@
+.content {
+	padding: 15px;
+}
+
+button {
+	margin : 5px;
+}
+
+.done-tick{
+	color : #2ecc71;
+}
+
+.progress-litte{
+	background-color: #e67e22 !important;
+}
+
+.progress-middle{
+	background-color : #3498db !important;
+}
+
+.progress-more {
+	background-color : #2ecc71 !important;
+}
+
+.progress-almost{
+	background-color: #27ae60 !important;
+}
+
+.font-40{
+	font-size: 40px;
+}
