@@ -141,7 +141,7 @@ var addQueue = () => {
 	queueInput += "<button class='btn btn-info' onclick='initiateDownload(this)' id='initiatebutton_" + queueElements + "'> <span class='glyphicon glyphicon-play'></span> Start Download </button>";
 	queueInput += "<button class='btn btn-info' disabled='true' onclick='pause(this)' id='pause_button_" + queueElements + "'> <span class='glyphicon glyphicon-pause'></span> Pause Download </button>";
 	queueInput += "<button class='btn btn-info' disabled='true' onclick='resume(this)' id='resume_button_" + queueElements + "'> <span class='glyphicon glyphicon-refresh'></span> Resume Download </button>";
-	queueInput += "<button class='btn btn-info pull-right' onclick='deleteFn(this)' id='delete_button_" + queueElements + "'> <span class='glyphicon glyphicon-remove '></span>  </button>";
+	queueInput += "<button class='btn btn-danger pull-right' onclick='deleteFn(this)' id='delete_button_" + queueElements + "'> <span class='glyphicon glyphicon-remove '></span>  </button>";
 	// queueInput += "<button onclick='queue(this)' id='button_"+queueElements+"'> This button </button>";
 	queueInput += "<p>";
 	queueInput += "<div id='progress_bar_" + queueElements + "'></div>";
@@ -188,26 +188,33 @@ var autoShutToggle = () => {
 
 var checkAutoShutDownEnabled = () => {
 
-	if (completed && completed.length) {
-		// console.log('Checked !', completed);
-		var taskPending = false;
-		completed.forEach(function(statusEach) {
-			if (statusEach === 0) {
-				taskPending = true;
+	if(autoShutState){
+		if (completed && completed.length) {
+			// console.log('Checked !', completed);
+			var taskPending = false;
+			completed.forEach(function(statusEach) {
+				if (statusEach === 0) {
+					taskPending = true;
+				}
+			})
+			if (!taskPending) {
+				// console.log('All Task COmpleted YAYAYY');
+				if(autoShutState){
+					document.getElementById('message_body').innerHTML = "<b><section class='content font-40'> <span class='glyphicon glyphicon-log-out'></span> Initiating shutdown...</section></b>";
+					document.getElementById('whole_body').innerHTML = "";
+					
+					setTimeout(()=> {
+						console.log('SHUTDOWN !');
+					}, 5000);
+				}
+				
+			} else {
+				// console.log('All task Not Completed');
 			}
-		})
-		if (!taskPending) {
-			// console.log('All Task COmpleted YAYAYY');
-			document.getElementById('message_body').innerHTML = "<b><section class='content font-40'> <span class='glyphicon glyphicon-log-out'></span> Initiating shutdown...</section></b>";
-			document.getElementById('whole_body').innerHTML = "";
-			
-			setTimeout(()=> {
-				console.log('SHUTDOWN !');
-			}, 5000);
-		} else {
-			// console.log('All task Not Completed');
 		}
 	}
+
+	
 
 }
 
